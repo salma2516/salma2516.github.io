@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salma S | Python & AI/ML Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#0A0F1E;--surface:#111827;--card:#1A2235;
+  --accent:#00E5B4;--accent2:#7C3AED;
+  --text:#E8EDF5;--muted:#8892A4;--border:#1E2D45;
+}
+body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;line-height:1.6;overflow-x:hidden;width:100%;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 4%;background:rgba(10,15,30,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Fira Code',monospace;color:var(--accent);font-size:1rem;font-weight:500;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+@media(max-width:500px){.nav-links{display:none;}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 4% 3rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,rgba(124,58,237,0.15) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+.hero-content{width:100%;position:relative;z-index:1;}
+.hero-tag{font-family:'Fira Code',monospace;color:var(--accent);font-size:0.8rem;margin-bottom:1.2rem;display:block;letter-spacing:0.05em;}
+.hero h1{font-size:clamp(2rem,7vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1.2rem;}
+.hero h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{color:var(--muted);font-size:clamp(0.9rem,2vw,1.05rem);margin-bottom:2rem;line-height:1.7;}
+.hero-btns{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-primary{background:var(--accent);color:#0A0F1E;padding:0.75rem 1.8rem;border-radius:6px;font-weight:600;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,229,180,0.3);}
+.btn-secondary{border:1px solid var(--border);color:var(--text);padding:0.75rem 1.8rem;border-radius:6px;font-weight:500;font-size:0.9rem;text-decoration:none;transition:all 0.2s;display:inline-block;}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);}
+.hero-stats{display:flex;gap:2rem;flex-wrap:wrap;padding-top:2rem;border-top:1px solid var(--border);}
+.stat-num{font-size:1.8rem;font-weight:700;color:var(--accent);font-family:'Fira Code',monospace;display:block;}
+.stat-label{color:var(--muted);font-size:0.8rem;margin-top:0.1rem;}
+
+/* SECTIONS */
+section{padding:4rem 4%;width:100%;}
+.section-tag{font-family:'Fira Code',monospace;color:var(--accent);font-size:0.78rem;letter-spacing:0.1em;margin-bottom:0.6rem;display:block;}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:2.5rem;}
+
+/* SKILLS */
+#skills{background:var(--surface);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all 0.25s;}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.skill-icon{font-size:1.6rem;margin-bottom:0.8rem;display:block;}
+.skill-title{font-size:0.95rem;font-weight:600;margin-bottom:0.8rem;color:var(--text);}
+.tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{background:rgba(0,229,180,0.08);color:var(--accent);border:1px solid rgba(0,229,180,0.25);padding:2px 10px;border-radius:20px;font-size:0.72rem;font-family:'Fira Code',monospace;white-space:nowrap;}
+
+/* EXPERIENCE */
+#experience{background:var(--bg);}
+.timeline{position:relative;padding-left:1.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2));}
+.t-item{position:relative;margin-bottom:2.5rem;}
+.t-item::before{content:'';position:absolute;left:-1.85rem;top:4px;width:11px;height:11px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);}
+.t-date{font-family:'Fira Code',monospace;color:var(--accent);font-size:0.75rem;margin-bottom:0.4rem;}
+.t-title{font-size:1rem;font-weight:600;margin-bottom:0.15rem;}
+.t-company{color:var(--muted);font-size:0.85rem;margin-bottom:0.6rem;}
+.t-desc{color:var(--muted);font-size:0.85rem;line-height:1.6;}
+
+/* PROJECTS */
+#projects{background:var(--surface);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem;}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all 0.25s;position:relative;overflow:hidden;}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transition:transform 0.3s;}
+.proj-card:hover::before{transform:scaleX(1);}
+.proj-card:hover{transform:translateY(-3px);border-color:rgba(0,229,180,0.3);}
+.proj-emoji{font-size:1.8rem;margin-bottom:0.8rem;display:block;}
+.proj-title{font-size:0.95rem;font-weight:600;margin-bottom:0.6rem;color:var(--text);}
+.proj-desc{color:var(--muted);font-size:0.82rem;line-height:1.6;margin-bottom:1rem;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;}
+.proj-link{display:inline-flex;align-items:center;gap:0.3rem;color:var(--accent);font-size:0.78rem;text-decoration:none;border:1px solid rgba(0,229,180,0.3);padding:0.35rem 0.9rem;border-radius:20px;transition:all 0.2s;font-family:'Fira Code',monospace;}
+.proj-link:hover{background:rgba(0,229,180,0.1);}
+
+/* CERTIFICATIONS */
+#certifications{background:var(--bg);}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem;}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:1.1rem 1.3rem;display:flex;align-items:center;gap:0.8rem;transition:all 0.2s;}
+.cert-card:hover{border-color:var(--accent2);transform:translateX(3px);}
+.cert-icon{font-size:1.4rem;flex-shrink:0;}
+.cert-name{font-size:0.82rem;font-weight:500;color:var(--text);}
+.cert-org{color:var(--muted);font-size:0.72rem;margin-top:0.15rem;}
+
+/* CONTACT */
+#contact{background:var(--surface);text-align:center;}
+.contact-inner{max-width:580px;margin:0 auto;}
+.contact-desc{color:var(--muted);margin-bottom:2rem;font-size:0.95rem;}
+.contact-links{display:flex;justify-content:center;gap:0.8rem;flex-wrap:wrap;}
+.contact-link{display:flex;align-items:center;gap:0.4rem;color:var(--text);text-decoration:none;background:var(--card);border:1px solid var(--border);padding:0.7rem 1.2rem;border-radius:8px;font-size:0.85rem;transition:all 0.2s;}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{text-align:center;padding:1.5rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.8rem;font-family:'Fira Code',monospace;}
+
+/* SCROLL */
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Salma S</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="hero-tag"> Python Developer & AI/ML Engineer</span>
+    <h1>Hi, I'm <span>Salma S</span><br>I build intelligent software.</h1>
+    <p class="hero-desc">B.Tech graduate in CS Engineering (AI & ML) with hands-on experience in Python, Django, Flask, Machine Learning, and full-stack development across 4 internships and real-world AI projects.</p>
+    <div class="hero-btns">
+      <a href="mailto:salma250824@gmail.com" class="btn-primary">Hire Me</a>
+      <a href="https://salma2516.github.io/Salma_Final_Resume.pdf" target="_blank" download class="btn-secondary">📄 Download Resume</a>
+      <a href="https://github.com/salma2516" target="_blank" class="btn-secondary">View GitHub →</a>
+      <a href="https://www.linkedin.com/in/salma-s-b5a274279" target="_blank" class="btn-secondary">View LinkedIn →</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">4</span><div class="stat-label">Internships</div></div>
+      <div><span class="stat-num">8.91</span><div class="stat-label">CGPA / 10</div></div>
+      <div><span class="stat-num">4+</span><div class="stat-label">AI Projects</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <span class="section-tag"> What I work with</span>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-icon">🐍</span>
+      <div class="skill-title">Programming</div>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">C#</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">⚙️</span>
+      <div class="skill-title">Frameworks</div>
+      <div class="tags">
+        <span class="tag">Django</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">ASP.NET</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🤖</span>
+      <div class="skill-title">AI / ML</div>
+      <div class="tags">
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">OpenCV</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Deep Learning</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🗄️</span>
+      <div class="skill-title">Databases</div>
+      <div class="tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">SQL Server</span>
+        <span class="tag">Azure SQL</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">🌐</span>
+      <div class="skill-title">Web & Tools</div>
+      <div class="tags">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag">Git</span>
+        <span class="tag">REST APIs</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-icon">💡</span>
+      <div class="skill-title">Concepts</div>
+      <div class="tags">
+        <span class="tag">OOP</span>
+        <span class="tag">Agile</span>
+        <span class="tag">Debugging</span>
+        <span class="tag">API Integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-tag"> Where I've worked</span>
+  <h2 class="section-title">Experience</h2>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-date">Feb 2026 – Jun 2026</div>
+      <div class="t-title">Full Stack Developer Intern</div>
+      <div class="t-company">Acaders Software Development, Bangalore</div>
+      <div class="t-desc">Developed Python web applications using Django, REST APIs, MySQL. Collaborated in Agile environment using Git & GitHub.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-date">Jun 2025 – Jul 2025</div>
+      <div class="t-title">.NET Developer Intern</div>
+      <div class="t-company">Rail Wheel Factory, Ministry of Railways (Central Govt)</div>
+      <div class="t-desc">Built Internship Management System using ASP.NET, SQL Server, AJAX & Dapper ORM. Participated in testing, debugging & deployment.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-date">Feb 2025 – Nov 2025</div>
+      <div class="t-title">Machine Learning Intern</div>
+      <div class="t-company">Rinex Technologies | Remote</div>
+      <div class="t-desc">Built ML models using Python, TensorFlow, Scikit-learn. Performed feature engineering, hyperparameter tuning & predictive analytics.</div>
+    </div>
+    <div class="t-item">
+      <div class="t-date">Jun 2024 – Jul 2024</div>
+      <div class="t-title">Web Development Intern</div>
+      <div class="t-company">UK Info Tech, Pudukottai</div>
+      <div class="t-desc">Developed and tested responsive web applications using HTML, CSS & JavaScript ensuring cross-browser compatibility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <span class="section-tag"> What I've built</span>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+    <div class="proj-card">
+      <span class="proj-emoji">🌾</span>
+      <div class="proj-title">AgriGuard — AI Smart Farming Platform</div>
+      <div class="proj-desc">AI-powered crop monitoring with disease detection, fertilizer recommendation, IoT sensor integration, weather monitoring & WhatsApp alerts.</div>
+      <div class="proj-stack">
+        <span class="tag">Python</span><span class="tag">Flask</span>
+        <span class="tag">TensorFlow</span><span class="tag">OpenCV</span>
+        <span class="tag">MySQL</span><span class="tag">IoT</span>
+      </div>
+      <a href="https://github.com/salma2516" target="_blank" class="proj-link">🐙 View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-emoji">📄</span>
+      <div class="proj-title">AI Resume Builder & ATS Analyzer</div>
+      <div class="proj-desc">Intelligent ATS Resume Analyzer with resume parsing, ATS scoring, keyword extraction & job-role matching using NLP.</div>
+      <div class="proj-stack">
+        <span class="tag">Python</span><span class="tag">Flask</span>
+        <span class="tag">NLP</span><span class="tag">Scikit-learn</span>
+      </div>
+      <a href="https://github.com/salma2516" target="_blank" class="proj-link">🐙 View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-emoji">🚌</span>
+      <div class="proj-title">Bus Buddy — Smart Bus Tracking</div>
+      <div class="proj-desc">GPS-enabled real-time bus tracking & complaint management platform with live location updates & authentication system.</div>
+      <div class="proj-stack">
+        <span class="tag">Node.js</span><span class="tag">Express.js</span>
+        <span class="tag">Socket.IO</span><span class="tag">MySQL</span>
+      </div>
+      <a href="https://github.com/salma2516" target="_blank" class="proj-link">🐙 View on GitHub →</a>
+    </div>
+    <div class="proj-card">
+      <span class="proj-emoji">📚</span>
+      <div class="proj-title">StudyArc — Smart Study Planner</div>
+      <div class="proj-desc">Responsive study planner with subject management, task tracking, analytics dashboard, exam countdown & dark mode.</div>
+      <div class="proj-stack">
+        <span class="tag">HTML</span><span class="tag">CSS</span>
+        <span class="tag">JavaScript</span><span class="tag">Local Storage</span>
+      </div>
+      <a href="https://github.com/salma2516" target="_blank" class="proj-link">🐙 View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <span class="section-tag"> Credentials</span>
+  <h2 class="section-title">Certifications</h2>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <span class="cert-icon">☁️</span>
+      <div><div class="cert-name">Azure Data Fundamentals</div><div class="cert-org">Microsoft DP-900</div></div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">🤖</span>
+      <div><div class="cert-name">GenAI Powered Data Analytics</div><div class="cert-org">Forage</div></div>
+    </div>
+    <div class="cert-card">
+      <span class="cert-icon">📊</span>
+      <div><div class="cert-name">Data Analytics Certification</div><div class="cert-org">Infosys Foundation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <span class="section-tag"> Let's connect</span>
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="contact-desc">Actively looking for Python Developer & AI/ML Engineer roles. Available to join immediately!</p>
+    <div class="contact-links">
+      <a href="mailto:salma250824@gmail.com" class="contact-link">📧 Email</a>
+      <a href="tel:+917418902305" class="contact-link">📞 Call</a>
+      <a href="https://linkedin.com/in/salma-s-b5a274279" target="_blank" class="contact-link">💼 LinkedIn</a>
+      <a href="https://github.com/salma2516" target="_blank" class="contact-link">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>// built with passion by Salma S — Python Developer & AI/ML Engineer 🚀</footer>
+
+</body>
+</html>
